@@ -16,6 +16,7 @@ import net.openid.appauth.AuthorizationResponse;
 import net.openid.appauth.AuthorizationService;
 import net.openid.appauth.AuthorizationServiceConfiguration;
 import net.openid.appauth.ClientSecretBasic;
+import net.openid.appauth.ClientSecretPost;
 import net.openid.appauth.EndSessionRequest;
 import net.openid.appauth.EndSessionResponse;
 import net.openid.appauth.ResponseTypeValues;
@@ -398,7 +399,7 @@ public class FlutterAppauthPlugin implements FlutterPlugin, MethodCallHandler, P
         if (clientSecret == null) {
             authorizationService.performTokenRequest(tokenRequest, tokenResponseCallback);
         } else {
-            authorizationService.performTokenRequest(tokenRequest, new ClientSecretBasic(clientSecret), tokenResponseCallback);
+            authorizationService.performTokenRequest(tokenRequest, new ClientSecretPost(clientSecret), tokenResponseCallback);
         }
     }
 
@@ -564,7 +565,7 @@ public class FlutterAppauthPlugin implements FlutterPlugin, MethodCallHandler, P
                 if (clientSecret == null) {
                     authService.performTokenRequest(authResponse.createTokenExchangeRequest(), tokenResponseCallback);
                 } else {
-                    authService.performTokenRequest(authResponse.createTokenExchangeRequest(), new ClientSecretBasic(clientSecret), tokenResponseCallback);
+                    authService.performTokenRequest(authResponse.createTokenExchangeRequest(), new ClientSecretPost(clientSecret), tokenResponseCallback);
                 }
             } else {
                 finishWithSuccess(authorizationResponseToMap(authResponse));

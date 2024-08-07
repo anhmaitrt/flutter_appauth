@@ -1,4 +1,4 @@
-name: flutter_appauth_secret_post_workspace
+name: flutter_appauth_secret_post
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
